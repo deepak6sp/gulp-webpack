@@ -12,13 +12,13 @@ gulp.task('webpack',[],function(){
 });
 
 gulp.task('webpack-dev-server', function(callback) {
-    var myConfig = Object.create(webpackConfig);
-    myConfig.devtool = "eval";
-    myConfig.debug = true;
+    var serverConfig = Object.create(webpackConfig);
+    serverConfig.devtool = "eval";
+    serverConfig.debug = true;
     // Start a webpack-dev-server
 
-    new WebpackDevServer(webpack(myConfig), {
-        publicPath: myConfig.output.publicPath,
+    new WebpackDevServer(webpack(serverConfig), {
+        publicPath: serverConfig.output.publicPath,
         stats: {
             colors: true
         }
