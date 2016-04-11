@@ -4,11 +4,13 @@ var webpack = require("webpack");
 var WebpackDevServer = require("webpack-dev-server");
 var webpackConfig = require("./webpack.config.js");
 var stream = require('webpack-stream');
+var rename = require('gulp-rename');
 
 gulp.task('webpack',[],function(){
+   
     return gulp.src('./app/*.js')
     .pipe (stream(webpackConfig))
-    .pipe(gulp.dest('./dist'));
+    .pipe(gulp.dest('./public/js/'));
 });
 
 gulp.task('webpack-dev-server', function(callback) {
@@ -33,7 +35,7 @@ gulp.task('webpack-dev-server', function(callback) {
     });
 });
 
-gulp.task('watch', function() {
+gulp.task('watch',['webpack'],function() {
     gulp.watch('./app/*.js', ['webpack']);
 });
 gulp.task("default",['webpack-dev-server','watch']);
