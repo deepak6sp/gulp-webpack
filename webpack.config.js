@@ -17,6 +17,11 @@ var config = {
     filename: "bundle.min.js",
     publicPath: "/public/js/"
   },
+  module: {
+    loaders: [
+      { test: /\.js$/, loader: 'jsx-loader' }
+    ]
+  },
    plugins: [
     new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js'),
     new webpack.optimize.UglifyJsPlugin({minimize: true})
